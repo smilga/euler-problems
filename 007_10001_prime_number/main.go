@@ -4,15 +4,25 @@ import "fmt"
 
 func main() {
 	n := 10001
-	c := 0
 
 	isPrime := func(x int) bool {
-		for i := 2; i < x; i++ {
+		out := true
+		for i := 2; i*i <= x; i++ {
 			if x%i == 0 {
-				return false
+				out = false
+				break
 			}
-			return true
+		}
+		return out
+	}
+
+	i := 1
+	for n > 0 {
+		i++
+		if isPrime(i) {
+			n--
 		}
 	}
-	fmt.Prinln(isPrime(3))
+	fmt.Println("counter: ", n, "Prime nr.: ", i)
+
 }
